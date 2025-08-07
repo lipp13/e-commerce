@@ -1,0 +1,133 @@
+    <!DOCTYPE html>
+    <html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register</title>
+        <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+        <script>tailwind.config={theme:{extend:{colors:{primary:'#1E40AF',secondary:'#3B82F6'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    </head>
+    <body class="min-h-screen bg-white relative overflow-hidden">
+        <!-- Main content -->
+        <div class="min-h-screen flex items-center justify-center p-6 relative z-10">
+            <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-md relative">
+                <!-- Header -->
+                <div class="flex justify-between items-center mb-6">
+                    <h1 class="text-2xl font-semibold text-gray-800">Daftar</h1>
+                    <a href="log-in.html">Masuk</a>
+                </div>
+                
+                <!-- Form -->
+                <form class="space-y-4">
+                    <div>
+                        <label for="namadepan" class="block text-sm font-medium text-gray-700 mb-1">Nama Depan</label>
+                        <input type="text" id="namadepan" placeholder="Masukkan Nama Depan..." 
+                            class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                    </div>
+                    
+                    <div>
+                        <label for="namabelakang" class="block text-sm font-medium text-gray-700 mb-1">Nama Belakang</label>
+                        <input type="text" id="namabelakang" placeholder="Masukkan Nama Belakang..." 
+                            class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                    </div>
+                    
+                    <div>
+                        <label for="handphone" class="block text-sm font-medium text-gray-700 mb-1">No. Handphone (Tersedia di WhatsApp)</label>
+                        <input type="tel" id="handphone" placeholder="+62345678901" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="email" placeholder="Masukkan email..." 
+                            class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                    </div>
+                    
+                    <div class="relative">
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <input type="password" id="password" placeholder="Masukkan Password..." 
+                            class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none pr-10">
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-3 mt-6 password-toggle" onclick="togglePasswordVisibility('password')">
+                            <i class="ri-eye-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                        <label for="konfirmasipassword" class="block text-sm font-medium text-gray-700 mb-1">Konfirmasi Password</label>
+                        <input type="password" id="konfirmasipassword" placeholder="Konfirmasi Password..." 
+                            class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none pr-10">
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-3 mt-6 password-toggle" onclick="togglePasswordVisibility('konfirmasipassword')">
+                            <i class="ri-eye-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="kodereferral" class="block text-sm font-medium text-gray-700 mb-1">Kode Referral <span class="text-gray-400">(Opsional)</span></label>
+                        <input type="text" id="kodereferral" placeholder="Masukkan kode referral" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                    </div>
+                    
+                    <!-- Terms checkbox -->
+                    <div class="flex items-start mt-6">
+                        <div class="flex items-center h-5">
+                            <input id="terms" type="checkbox" class="w-4 h-4 border border-gray-300 rounded accent-primary focus:ring-primary">
+                        </div>
+                        <div class="ml-3 text-sm">
+                            <label for="terms" class="text-gray-600">Dengan mendaftar, saya setuju dengan 
+                                <a href="#" class="text-primary hover:underline">Syarat</a>, 
+                                <a href="#" class="text-primary hover:underline">Ketentuan</a>, dan 
+                                <a href="#" class="text-primary hover:underline">Privasi</a> kami.
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Submit button -->
+                    <a href="home_page.html" class="block text-center w-full bg-gray-200 text-gray-600 py-3 rounded !rounded-button font-medium mt-4 hover:bg-gray-300 transition duration-200 whitespace-nowrap">
+                        Daftar
+                    </a>
+                    
+                    <!-- Divider -->
+                    <div class="flex items-center my-6">
+                        <div class="flex-1 border-t border-gray-300"></div>
+                        <span class="px-4 text-sm text-gray-500">atau dengan</span>
+                        <div class="flex-1 border-t border-gray-300"></div>
+                    </div>
+                    
+                    <!-- Google sign-in -->
+                    <button type="button" class="w-full border border-gray-300 rounded !rounded-button py-2.5 flex items-center justify-center hover:bg-gray-50 transition duration-200 whitespace-nowrap">
+                        <div class="w-5 h-5 flex items-center justify-center mr-3">
+                            <i class="ri-google-fill text-lg"></i>
+                        </div>
+                        <span>Google</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Logo in bottom left -->
+            <div class="absolute bottom-6 left-6 z-20">
+                <span class="font-['Pacifico'] text-white text-2xl">GS</span>
+            </div>
+        </div>
+
+        <script>
+            function togglePasswordVisibility(inputId) {
+                const passwordInput = document.getElementById(inputId);
+                const icon = event.currentTarget.querySelector('i');
+                
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.remove('ri-eye-line');
+                    icon.classList.add('ri-eye-off-line');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.remove('ri-eye-off-line');
+                    icon.classList.add('ri-eye-line');
+                }
+            }
+        </script>
+    </body>
+    </html>

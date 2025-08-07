@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Store</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#0047AB',secondary:'#FF6B00'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="bg-primary text-white">
+        <!-- Top Navigation -->
+        <div class="flex items-center justify-between px-6 py-2">
+            <a href="#" class="text-2xl font-['Pacifico'] text-white">Central Store</a>
+            
+            <div class="flex-1 max-w-xl mx-6">
+                <div class="relative">
+                    <input type="text" placeholder="Search for products..." class="w-full py-1.5 px-4 pr-10 rounded-button text-gray-800 border-none focus:outline-none focus:ring-2 focus:ring-primary/30">
+                    <div class="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-500">
+                        <i class="ri-search-line"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <a href="#" class="flex items-center space-x-1">
+                    <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-user-line text-white"></i>
+                    </div>
+                    <a href="register.html">Register</a>
+                    <a href="log-in.html">Log-in</a>
+                </a>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Banner -->
+    <div class="relative w-full h-[400px] bg-black overflow-hidden">
+        <div style="background-image: url('https://www.apple.com/newsroom/images/2023/09/apple-unveils-iphone-15-pro-and-iphone-15-pro-max/tile/Apple-iPhone-15-Pro-lineup-hero-230912.jpg.news_app_ed.jpg');" class="absolute inset-0 bg-cover bg-center"></div>
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+            <h1 class="text-5xl font-bold mb-4"></h1>
+            <div class="flex space-x-4 mb-4">
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-6">
+        <!-- Promotional Banners -->
+        <div class="relative mb-8">
+            <div class="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory">
+                <div class="min-w-full snap-center">
+                    <div class="bg-gradient-to-r from-red-500 to-orange-400 rounded-lg overflow-hidden">
+                        <div class="flex items-center p-4">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-white mb-1">Shoppers' Weekend</h3>
+                                <p class="text-3xl font-bold text-white mb-2">90% OFF</p>
+                                <p class="text-sm text-white mb-4">Limited time offer on selected items</p>
+                                <button class="bg-white text-orange-500 px-4 py-1.5 rounded-button font-medium !rounded-button whitespace-nowrap">Shop Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="banner-pagination flex justify-center mt-4 space-x-2">
+                <div class="h-1.5 w-6 rounded-full bg-primary transition-all duration-300 active"></div>
+                <div class="h-1.5 w-1.5 rounded-full bg-gray-300 transition-all duration-300"></div>
+                <div class="h-1.5 w-1.5 rounded-full bg-gray-300 transition-all duration-300"></div>
+                <div class="h-1.5 w-1.5 rounded-full bg-gray-300 transition-all duration-300"></div>
+            </div>
+        </div>
+        <!-- Featured Categories -->
+        <div class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">Featured Categories</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="#" class="bg-gray-900 rounded-lg overflow-hidden group">
+                    <div class="p-4 text-center">
+                        <div class="w-12 h-12 mx-auto mb-2 flex items-center justify-center bg-gray-800 rounded-full text-white">
+                            <i class="ri-smartphone-line ri-lg"></i>
+                        </div>
+                        <h3 class="text-white group-hover:text-primary transition-colors">Smartphones</h3>
+                    </div>
+                </a>
+                <a href="#" class="bg-gray-900 rounded-lg overflow-hidden group">
+                    <div class="p-4 text-center">
+                        <div class="w-12 h-12 mx-auto mb-2 flex items-center justify-center bg-gray-800 rounded-full text-white">
+                            <i class="ri-computer-line ri-lg"></i>
+                        </div>
+                        <h3 class="text-white group-hover:text-primary transition-colors">Laptops</h3>
+                    </div>
+                </a>
+                <a href="#" class="bg-gray-900 rounded-lg overflow-hidden group">
+                    <div class="p-4 text-center">
+                        <div class="w-12 h-12 mx-auto mb-2 flex items-center justify-center bg-gray-800 rounded-full text-white">
+                            <i class="ri-headphone-line ri-lg"></i>
+                        </div>
+                        <h3 class="text-white group-hover:text-primary transition-colors">Audio</h3>
+                    </div>
+                </a>
+                <a href="#" class="bg-gray-900 rounded-lg overflow-hidden group">
+                    <div class="p-4 text-center">
+                        <div class="w-12 h-12 mx-auto mb-2 flex items-center justify-center bg-gray-800 rounded-full text-white">
+                            <i class="ri-tv-line ri-lg"></i>
+                        </div>
+                        <h3 class="text-white group-hover:text-primary transition-colors">TVs</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Popular Products -->
+        <div class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">Popular Products</h2>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=pink%20smartphone%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=3&orientation=squarish" alt="Smartphone" class="w-full h-36 object-contain">
+                        <div class="absolute top-2 right-2 w-6 h-6 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <i class="ri-heart-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">Galaxy S23 Ultra</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(128)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp12.640.000</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">Rp19.339.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=wireless%20earbuds%20with%20charging%20case%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=4&orientation=squarish" alt="Earbuds" class="w-full h-36 object-contain">
+                        <div class="absolute top-2 right-2 w-6 h-6 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <i class="ri-heart-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">AirPods Pro 2</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(349)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp 3.399.000</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">Rp 4.299.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=smart%20watch%20with%20black%20band%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=5&orientation=squarish" alt="Smartwatch" class="w-full h-36 object-contain">
+                        <div class="absolute top-2 right-2 w-6 h-6 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <i class="ri-heart-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">Galaxy Watch 6</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(87)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp5.499.000</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">Rp5.999.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=gaming%20console%20with%20controller%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=6&orientation=squarish" alt="Gaming Console" class="w-full h-36 object-contain">
+                        <div class="absolute top-2 right-2 w-6 h-6 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <i class="ri-heart-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">PlayStation 5 Slim</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(215)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp8.299.000</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">Rp8.688.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=tablet%20device%20with%20stylus%20pen%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=7&orientation=squarish" alt="Tablet" class="w-full h-36 object-contain">
+                        <div class="absolute top-2 right-2 w-6 h-6 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <i class="ri-heart-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">iPad Air 5</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(156)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp13.999.000</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">Rp15.999.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trending Products -->
+        <div class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">Trending Products</h2>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=smartphone%20with%20gradient%20color%20back%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=8&orientation=squarish" alt="Smartphone" class="w-full h-36 object-contain">
+                        <div class="absolute top-2 right-2 w-6 h-6 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <i class="ri-heart-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">iPhone 15</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(432)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp 11.499.000</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">Rp 14.499.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=over-ear%20headphones%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=9&orientation=squarish" alt="Headphones" class="w-full h-36 object-contain">
+                        <div class="absolute top-2 right-2 w-6 h-6 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <i class="ri-heart-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">Sony WH-1000XM5</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(278)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp4.799.000</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">Rp5.999.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=laptop%20computer%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=10&orientation=squarish" alt="Laptop" class="w-full h-36 object-contain">
+                        <div class="absolute top-2 right-2 w-6 h-6 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <i class="ri-heart-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">MacBook Air M3</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(183)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp20.499.000</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">Rp25.999.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=smart%20speaker%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=11&orientation=squarish" alt="Smart Speaker" class="w-full h-36 object-contain">
+                        <div class="absolute top-2 right-2 w-6 h-6 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <i class="ri-heart-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">Echo Dot 5th Gen</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(352)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp534.000</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">Rp600.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=action%20camera%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=12&orientation=squarish" alt="Action Camera" class="w-full h-36 object-contain">
+                        <div class="absolute top-2 right-2 w-6 h-6 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <i class="ri-heart-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">GoPro Hero 12</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(126)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp8.217.500</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">Rp10.900.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Special Deals -->
+        <div class="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg p-6 mb-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-2">Brand Partners</h2>
+                    <p class="text-white/80 mb-4">Shop from our trusted brand partners</p>
+                </div>
+                <button class="bg-white text-primary px-4 py-2 rounded-button font-medium !rounded-button whitespace-nowrap">View All</button>
+            </div>
+            <div class="grid grid-cols-6 gap-4 mt-4">
+                <div class="bg-white/10 rounded-lg p-4 flex items-center justify-center">
+                    <div class="w-8 h-8 flex items-center justify-center text-white">
+                        <i class="ri-apple-fill ri-2x"></i>
+                    </div>
+                </div>
+                <div class="bg-white/10 rounded-lg p-4 flex items-center justify-center">
+                    <div class="w-8 h-8 flex items-center justify-center text-white">
+                        <i class="ri-samsung-fill ri-2x"></i>
+                    </div>
+                </div>
+                <div class="bg-white/10 rounded-lg p-4 flex items-center justify-center">
+                    <div class="w-8 h-8 flex items-center justify-center text-white">
+                        <i class="ri-sony-fill ri-2x"></i>
+                    </div>
+                </div>
+                <div class="bg-white/10 rounded-lg p-4 flex items-center justify-center">
+                    <div class="w-8 h-8 flex items-center justify-center text-white">
+                        <i class="ri-microsoft-fill ri-2x"></i>
+                    </div>
+                </div>
+                <div class="bg-white/10 rounded-lg p-4 flex items-center justify-center">
+                    <div class="w-8 h-8 flex items-center justify-center text-white">
+                        <i class="ri-google-fill ri-2x"></i>
+                    </div>
+                </div>
+                <div class="bg-white/10 rounded-lg p-4 flex items-center justify-center">
+                    <div class="w-8 h-8 flex items-center justify-center text-white">
+                        <i class="ri-amazon-fill ri-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Special Offers -->
+        <div class="bg-yellow-100 rounded-lg p-6 mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold">Special Offers</h2>
+                <a href="#" class="text-primary font-medium">View All</a>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div class="bg-white rounded-lg shadow-sm p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=wireless%20charging%20pad%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=13&orientation=squarish" alt="Charging Pad" class="w-full h-36 object-contain">
+                        <div class="absolute top-0 left-0 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-tl-lg rounded-br-lg">-30%</div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">Wireless Charging Pad</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(87)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp499.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=portable%20SSD%20drive%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=14&orientation=squarish" alt="SSD Drive" class="w-full h-36 object-contain">
+                        <div class="absolute top-0 left-0 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-tl-lg rounded-br-lg">-25%</div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">1TB Portable SSD</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(64)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp1.629.000</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">Rp2.999.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://ajazzstore.com/cdn/shop/files/4_ac5ac84c-97fd-440d-8efb-f537fbda9035.jpg?v=1736393839" alt="Gaming Keyboard" class="w-full h-36 object-contain">
+                        <div class="absolute top-0 left-0 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-tl-lg rounded-br-lg">-40%</div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">Ajazz AK680 MAX</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(129)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp619.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRP9NrPwCumOpzfZcsEeIWYfE8v7VIBCEp8FTlSYI6Awkm3G2DAgrm89oEGqP8Z7l0kG60OGZlp3ChnoaKyrNzABshevYqshnFIT8ezy5WshSumU0bSO1N9Zg" alt="Computer Mouse" class="w-full h-36 object-contain">
+                        <div class="absolute top-0 left-0 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-tl-lg rounded-br-lg">-35%</div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">Wireless Gaming Mouse</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(76)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp499.000</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">Rp699.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=power%20bank%20battery%20pack%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=17&orientation=squarish" alt="Power Bank" class="w-full h-36 object-contain">
+                        <div class="absolute top-0 left-0 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-tl-lg rounded-br-lg">-52%</div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">AUKEY Powerbank 20000mah PB-N93-BK USB C 22.5W PD 3.0 Slim</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(216)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp409.000</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">Rp858.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recently Viewed -->
+        <div class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">Recently Viewed</h2>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=smartphone%20with%20blue%20color%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=18&orientation=squarish" alt="Smartphone" class="w-full h-36 object-contain">
+                        <div class="absolute top-2 right-2 w-6 h-6 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <i class="ri-heart-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">Google Pixel 8</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(183)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp10.500.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=smart%20tv%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=19&orientation=squarish" alt="Smart TV" class="w-full h-36 object-contain">
+                        <div class="absolute top-2 right-2 w-6 h-6 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <i class="ri-heart-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">Samsung 55" QLED TV</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(241)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp11.550.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=wireless%20earbuds%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=20&orientation=squarish" alt="Earbuds" class="w-full h-36 object-contain">
+                        <div class="absolute top-2 right-2 w-6 h-6 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <i class="ri-heart-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">Galaxy Buds 3 Pro</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(97)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp2.499.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=smart%20watch%20with%20white%20band%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=21&orientation=squarish" alt="Smartwatch" class="w-full h-36 object-contain">
+                        <div class="absolute top-2 right-2 w-6 h-6 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <i class="ri-heart-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">Apple Watch Series 9</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(312)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp6.633.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-3 hover:shadow-md transition-shadow">
+                    <div class="relative mb-3">
+                        <img src="https://readdy.ai/api/search-image?query=tablet%20device%2C%20modern%20design%2C%20clean%20white%20background%2C%20professional%20product%20photography&width=200&height=200&seq=22&orientation=squarish" alt="Tablet" class="w-full h-36 object-contain">
+                        <div class="absolute top-2 right-2 w-6 h-6 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <i class="ri-heart-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-medium mb-1 line-clamp-2">Samsung Galaxy Tab S9</h3>
+                    <div class="flex items-center mb-1">
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(167)</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-bold">Rp8.499.000</span>
+                        </div>
+                        <button class="w-7 h-7 flex items-center justify-center bg-primary text-white rounded-full !rounded-full">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">About Us</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Our Story</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Careers</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Press</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Blog</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Customer Service</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Help Center</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Returns & Refunds</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Shipping Information</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Order Status</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Payment Methods</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Our Policies</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Return Policy</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Shipping Policy</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Accessibility</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Stay Connected</h3>
+                    <p class="text-gray-600 mb-4">Subscribe to our newsletter for the latest updates and offers.</p>
+                    <div class="flex mb-4">
+                        <input type="email" placeholder="Your email address" class="flex-1 py-2 px-3 rounded-l-button border-none focus:outline-none focus:ring-2 focus:ring-primary/30 text-sm">
+                        <button class="bg-primary text-white py-2 px-4 rounded-r-button !rounded-r-button whitespace-nowrap">Subscribe</button>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                            <i class="ri-twitter-x-fill"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                            <i class="ri-youtube-fill"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                            <i class="ri-pinterest-fill"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-6">
+                <div class="flex flex-wrap justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <p class="text-sm text-gray-600">&copy; 2025 TechStore. All rights reserved.</p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <div class="w-8 h-5 flex items-center justify-center">
+                            <i class="ri-visa-fill text-blue-700 ri-lg"></i>
+                        </div>
+                        <div class="w-8 h-5 flex items-center justify-center">
+                            <i class="ri-mastercard-fill text-red-500 ri-lg"></i>
+                        </div>
+                        <div class="w-8 h-5 flex items-center justify-center">
+                            <i class="ri-paypal-fill text-blue-500 ri-lg"></i>
+                        </div>
+                        <div class="w-8 h-5 flex items-center justify-center">
+                            <i class="ri-apple-fill text-gray-800 ri-lg"></i>
+                        </div>
+                        <div class="w-8 h-5 flex items-center justify-center">
+                            <i class="ri-google-fill text-blue-500 ri-lg"></i>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-auto mt-4 md:mt-0">
+                        <div class="flex space-x-4">
+                            <a href="#"><img src="https://readdy.ai/api/search-image?query=app%20store%20badge%2C%20clean%20design&width=120&height=40&seq=23&orientation=landscape" alt="App Store" class="h-10"></a>
+                            <a href="#"><img src="https://readdy.ai/api/search-image?query=google%20play%20badge%2C%20clean%20design&width=120&height=40&seq=24&orientation=landscape" alt="Google Play" class="h-10"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Banner pagination functionality
+            const paginationDots = document.querySelectorAll('.banner-pagination div');
+            paginationDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    paginationDots.forEach(d => {
+                        d.classList.remove('active');
+                        d.classList.add('w-1.5');
+                        d.classList.remove('w-6');
+                        d.classList.add('bg-gray-300');
+                        d.classList.remove('bg-primary');
+                    });
+                    dot.classList.add('active');
+                    dot.classList.remove('w-1.5');
+                    dot.classList.add('w-6');
+                    dot.classList.remove('bg-gray-300');
+                    dot.classList.add('bg-primary');
+                });
+            });
+
+            // Wishlist heart toggle
+            const heartIcons = document.querySelectorAll('.ri-heart-line');
+            heartIcons.forEach(icon => {
+                icon.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (icon.classList.contains('ri-heart-line')) {
+                        icon.classList.remove('ri-heart-line');
+                        icon.classList.add('ri-heart-fill');
+                        icon.classList.add('text-red-500');
+                    } else {
+                        icon.classList.add('ri-heart-line');
+                        icon.classList.remove('ri-heart-fill');
+                        icon.classList.remove('text-red-500');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

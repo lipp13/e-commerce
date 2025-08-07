@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Central Store</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"/>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet"/>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1e40af",
+              secondary: "#3b82f6",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50">
+    <header class="bg-primary">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center">
+            <a href="#" class="text-white font-['Pacifico'] text-2xl">Central Store</a>
+          </div>
+
+          <div class="flex-1 max-w-2xl mx-8">
+            <div class="relative">
+              <input
+                type="text"
+                class="w-full h-10 pl-10 pr-4 rounded-button border-none text-sm bg-white search-input"
+                placeholder="Cari produk..."
+              />
+              <div
+                class="absolute left-3 top-0 h-full w-4 flex items-center justify-center"
+              >
+                <i class="ri-search-line text-gray-400"></i>
+              </div>
+            </div>
+          </div>
+
+
+            <button class="text-white flex flex-col items-center">
+              <div class="w-6 h-6 flex items-center justify-center">
+                <i class="ri-shopping-cart-line"></i>
+              </div>
+              <a href="cart.html">Keranjang</a>
+            </button>
+            <button class="text-white flex flex-col items-center">
+              <div class="w-6 h-6 flex items-center justify-center">
+                <i class="ri-user-line"></i>
+              </div>
+              <a href="profil.html">Akun</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="container mx-auto px-4 py-6">
+      <section class="mb-8">
+        <div class="relative h-[400px] rounded-lg overflow-hidden">
+          <img
+            src="https://readdy.ai/api/search-image?query=modern%20minimalist%20product%20showcase%20scene%20with%20elegant%20lighting%2C%20soft%20gradient%20background%2C%20professional%20product%20photography%20setup%2C%20high-end%20commercial%20advertising%20composition%2C%20clean%20and%20sophisticated&width=1200&height=400&seq=1&orientation=landscape"
+            class="w-full h-full object-cover"
+            alt="Banner"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"
+          ></div>
+          <div
+            class="absolute top-1/2 left-16 transform -translate-y-1/2 text-white"
+          >
+            <h1 class="text-5xl font-bold mb-4">Promo Spesial</h1>
+            <p class="text-xl mb-6">Diskon hingga 90% untuk produk pilihan</p>
+            <button
+              class="bg-primary text-white px-8 py-3 rounded-button hover:bg-primary/90"
+            >
+              Belanja Sekarang
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold mb-4">Kategori Populer</h2>
+        <div class="grid grid-cols-6 gap-4">
+          <a
+            href="#"
+            class="flex flex-col items-center p-4 bg-white rounded-lg hover:shadow-md transition"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center text-primary mb-2"
+            >
+              <i class="ri-smartphone-line text-2xl"></i>
+            </div>
+            <span class="text-sm text-gray-700">Handphone</span>
+          </a>
+          <a
+            href="#"
+            class="flex flex-col items-center p-4 bg-white rounded-lg hover:shadow-md transition"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center text-primary mb-2"
+            >
+              <i class="ri-t-shirt-line text-2xl"></i>
+            </div>
+            <span class="text-sm text-gray-700">Fashion</span>
+          </a>
+          <a
+            href="#"
+            class="flex flex-col items-center p-4 bg-white rounded-lg hover:shadow-md transition"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center text-primary mb-2"
+            >
+              <i class="ri-computer-line text-2xl"></i>
+            </div>
+            <span class="text-sm text-gray-700">Komputer</span>
+          </a>
+          <a
+            href="#"
+            class="flex flex-col items-center p-4 bg-white rounded-lg hover:shadow-md transition"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center text-primary mb-2"
+            >
+              <i class="ri-home-line text-2xl"></i>
+            </div>
+            <span class="text-sm text-gray-700">Rumah</span>
+          </a>
+          <a
+            href="#"
+            class="flex flex-col items-center p-4 bg-white rounded-lg hover:shadow-md transition"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center text-primary mb-2"
+            >
+              <i class="ri-basketball-line text-2xl"></i>
+            </div>
+            <span class="text-sm text-gray-700">Olahraga</span>
+          </a>
+          <a
+            href="#"
+            class="flex flex-col items-center p-4 bg-white rounded-lg hover:shadow-md transition"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center text-primary mb-2"
+            >
+              <i class="ri-car-line text-2xl"></i>
+            </div>
+            <span class="text-sm text-gray-700">Otomotif</span>
+          </a>
+        </div>
+      </section>
+      <section class="mb-8">
+  <h2 class="text-2xl font-bold mb-4">Produk Terlaris</h2>
+  <div class="grid grid-cols-6 gap-4">
+    <div
+      class="bg-white rounded-lg overflow-hidden hover:shadow-md transition cursor-pointer"
+      data-id="1"
+      onclick="goToDetail(this)"
+    >
+      <img
+        src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+        class="w-full h-48 object-cover"
+        alt="Product"
+      />
+      <div class="p-4">
+        <h3 class="text-sm font-medium mb-2">Fjallraven</h3>
+        <div class="flex items-center mb-2">
+          <div class="text-yellow-400 flex">
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-half-fill text-xs"></i>
+          </div>
+          <span class="text-xs text-gray-500 ml-1">(128)</span>
+        </div>
+        <div class="text-primary font-medium">Rp 12.999.000</div>
+      </div>
+    </div>
+    <div
+      class="bg-white rounded-lg overflow-hidden hover:shadow-md transition cursor-pointer"
+      data-id="2"
+      onclick="goToDetail(this)"
+    >
+      <img
+        src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
+        class="w-full h-48 object-cover"
+        alt="Product"
+      />
+      <div class="p-4">
+        <h3 class="text-sm font-medium mb-2">Mens Casual Premium Slim Fit T-Shirts</h3>
+        <div class="flex items-center mb-2">
+          <div class="text-yellow-400 flex">
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-line text-xs"></i>
+          </div>
+          <span class="text-xs text-gray-500 ml-1">(86)</span>
+        </div>
+        <div class="text-primary font-medium">Rp 899.000</div>
+      </div>
+    </div>
+    <div
+      class="bg-white rounded-lg overflow-hidden hover:shadow-md transition cursor-pointer"
+      data-id="3"
+      onclick="goToDetail(this)"
+    >
+      <img
+        src="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+        class="w-full h-48 object-cover"
+        alt="Product"
+      />
+      <div class="p-4">
+        <h3 class="text-sm font-medium mb-2">Mens Cotton Jacket</h3>
+        <div class="flex items-center mb-2">
+          <div class="text-yellow-400 flex">
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+          </div>
+          <span class="text-xs text-gray-500 ml-1">(245)</span>
+        </div>
+        <div class="text-primary font-medium">Rp 3.499.000</div>
+      </div>
+    </div>
+    <div
+      class="bg-white rounded-lg overflow-hidden hover:shadow-md transition cursor-pointer"
+      data-id="4"
+      onclick="goToDetail(this)"
+    >
+      <img
+        src="https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg"
+        class="w-full h-48 object-cover"
+        alt="Product"
+      />
+      <div class="p-4">
+        <h3 class="text-sm font-medium mb-2">Mens Casual Slim Fit</h3>
+        <div class="flex items-center mb-2">
+          <div class="text-yellow-400 flex">
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-half-fill text-xs"></i>
+          </div>
+          <span class="text-xs text-gray-500 ml-1">(167)</span>
+        </div>
+        <div class="text-primary font-medium">Rp 15.999.000</div>
+      </div>
+    </div>
+    <div
+      class="bg-white rounded-lg overflow-hidden hover:shadow-md transition cursor-pointer"
+      data-id="5"
+      onclick="goToDetail(this)"
+    >
+      <img
+        src="https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg"
+        class="w-full h-48 object-cover"
+        alt="Product"
+      />
+      <div class="p-4">
+        <h3 class="text-sm font-medium mb-2">John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet</h3>
+        <div class="flex items-center mb-2">
+          <div class="text-yellow-400 flex">
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-line text-xs"></i>
+          </div>
+          <span class="text-xs text-gray-500 ml-1">(92)</span>
+        </div>
+        <div class="text-primary font-medium">Rp 8.999.000</div>
+      </div>
+    </div>
+    <div
+      class="bg-white rounded-lg overflow-hidden hover:shadow-md transition cursor-pointer"
+      data-id="6"
+      onclick="goToDetail(this)"
+    >
+      <img
+        src="https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg"
+        class="w-full h-48 object-cover"
+        alt="Product"
+      />
+      <div class="p-4">
+        <h3 class="text-sm font-medium mb-2">Solid Gold Petite Micropave</h3>
+        <div class="flex items-center mb-2">
+          <div class="text-yellow-400 flex">
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-fill text-xs"></i>
+            <i class="ri-star-half-fill text-xs"></i>
+          </div>
+          <span class="text-xs text-gray-500 ml-1">(156)</span>
+        </div>
+        <div class="text-primary font-medium">Rp 9.499.000</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <section class="mb-8">
+        <div class="grid grid-cols-2 gap-4">
+          <div
+            class="bg-gradient-to-r from-rose-500 to-pink-500 rounded-lg p-8 text-white relative overflow-hidden"
+          >
+            <div class="relative z-10">
+              <h3 class="text-3xl font-bold mb-2">Flash Sale!</h3>
+              <p class="text-lg mb-4">Diskon hingga 90% untuk produk pilihan</p>
+              <button class="bg-white text-primary px-6 py-2 rounded-button">
+                Lihat Semua
+              </button>
+            </div>
+            <img
+              src="https://readdy.ai/api/search-image?query=collection%20of%20modern%20electronic%20devices%20and%20gadgets%20with%20dynamic%20composition%2C%20professional%20product%20photography%2C%20clean%20white%20background&width=300&height=200&seq=8&orientation=landscape"
+              class="absolute right-0 bottom-0 h-full w-auto object-cover mix-blend-overlay opacity-50"
+              alt="Flash Sale"
+            />
+          </div>
+          <div
+            class="bg-gradient-to-r from-violet-500 to-purple-500 rounded-lg p-8 text-white relative overflow-hidden"
+          >
+            <div class="relative z-10">
+              <h3 class="text-3xl font-bold mb-2">Promo Spesial</h3>
+              <p class="text-lg mb-4">Dapatkan cashback hingga Rp 1.000.000</p>
+              <button class="bg-white text-primary px-6 py-2 rounded-button">
+                Lihat Semua
+              </button>
+            </div>
+            <img
+              src="https://readdy.ai/api/search-image?query=modern%20lifestyle%20products%20arrangement%20with%20elegant%20composition%2C%20professional%20product%20photography%2C%20clean%20white%20background&width=300&height=200&seq=9&orientation=landscape"
+              class="absolute right-0 bottom-0 h-full w-auto object-cover mix-blend-overlay opacity-50"
+              alt="Special Promo"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold mb-4">Brand Populer</h2>
+        <div class="grid grid-cols-6 gap-4">
+          <div
+            class="flex items-center justify-center h-20 bg-white rounded-lg hover:shadow-md transition"
+          >
+            <i class="ri-apple-fill text-3xl text-gray-600"></i>
+          </div>
+          <div
+            class="flex items-center justify-center h-20 bg-white rounded-lg hover:shadow-md transition"
+          >
+            <i class="ri-android-fill text-3xl text-gray-600"></i>
+          </div>
+          <div
+            class="flex items-center justify-center h-20 bg-white rounded-lg hover:shadow-md transition"
+          >
+            <i class="ri-microsoft-fill text-3xl text-gray-600"></i>
+          </div>
+          <div
+            class="flex items-center justify-center h-20 bg-white rounded-lg hover:shadow-md transition"
+          >
+            <i class="ri-amazon-fill text-3xl text-gray-600"></i>
+          </div>
+          <div
+            class="flex items-center justify-center h-20 bg-white rounded-lg hover:shadow-md transition"
+          >
+            <i class="ri-google-fill text-3xl text-gray-600"></i>
+          </div>
+          <div
+            class="flex items-center justify-center h-20 bg-white rounded-lg hover:shadow-md transition"
+          >
+            <i class="ri-netflix-fill text-3xl text-gray-600"></i>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-primary text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 class="text-lg font-bold mb-4">Tentang Kami</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="hover:text-gray-300">Profil Perusahaan</a>
+              </li>
+              <li><a href="#" class="hover:text-gray-300">Karir</a></li>
+              <li><a href="#" class="hover:text-gray-300">Blog</a></li>
+              <li>
+                <a href="#" class="hover:text-gray-300">Kebijakan Privasi</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4">Layanan</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="hover:text-gray-300">Cara Berbelanja</a>
+              </li>
+              <li><a href="#" class="hover:text-gray-300">Pengiriman</a></li>
+              <li><a href="#" class="hover:text-gray-300">Pembayaran</a></li>
+              <li><a href="#" class="hover:text-gray-300">Pengembalian</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4">Hubungi Kami</h3>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <i class="ri-phone-line mr-2"></i>
+                <span>0800-1234-5678</span>
+              </li>
+              <li class="flex items-center">
+                <i class="ri-mail-line mr-2"></i>
+                <span>centralstore@gmail.com</span>
+              </li>
+              <li class="flex items-center">
+                <i class="ri-map-pin-line mr-2"></i>
+                <span>Jakarta, Indonesia</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4">Ikuti Kami</h3>
+            <div class="flex space-x-4">
+              <a href="#" class="hover:text-gray-300">
+                <i class="ri-facebook-fill text-2xl"></i>
+              </a>
+              <a href="#" class="hover:text-gray-300">
+                <i class="ri-instagram-fill text-2xl"></i>
+              </a>
+              <a href="#" class="hover:text-gray-300">
+                <i class="ri-twitter-fill text-2xl"></i>
+              </a>
+              <a href="#" class="hover:text-gray-300">
+                <i class="ri-youtube-fill text-2xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-white/20 pt-8">
+          <div class="flex justify-between items-center">
+            <p>© 2025 centralstore Online. Hak Cipta Dilindungi.</p>
+            <div class="flex items-center space-x-4">
+              <i class="ri-visa-line text-2xl"></i>
+              <i class="ri-mastercard-line text-2xl"></i>
+              <i class="ri-paypal-line text-2xl"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      function goToDetail(element) {
+      const productId = element.getAttribute('data-id');
+      window.location.href = `detail_product.html?id=${productId}`;
+  }
+</script>
+  </body>
+</html>

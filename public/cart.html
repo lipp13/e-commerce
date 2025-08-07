@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keranjang</title>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: "#0a3b7c", secondary: "#e63946" },
+          borderRadius: { button: "8px" },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" />
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-primary text-white py-3 px-4">
+    <div class="flex justify-between items-center">
+      <a href="#" class="text-xl font-bold">Central Store</a>
+      <a href="checkout.html" class="relative">
+        <i class="ri-shopping-cart-line text-xl"></i>
+        <span id="cart-count" class="absolute -top-2 right-0 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center hidden">0</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container mx-auto p-4">
+    <h2 class="text-xl font-bold mb-4">Keranjang</h2>
+    <div id="cart-items" class="space-y-4"></div>
+    <div id="empty-cart" class="text-gray-500 text-center hidden">Keranjang kosong.</div>
+    <div class="mt-4">
+      <p class="text-lg font-bold">Total: <span id="total-payment">Rp 0</span></p>
+      <a href="beli.html" id="buy-now" class="mt-2 bg-primary text-white py-2 px-4 rounded disabled:bg-gray-300">Beli</a>
+    </div>
+
+    <!-- Recommendations -->
+    <section class="mt-8">
+      <h2 class="text-xl font-bold mb-4">Rekomendasi Untukmu</h2>
+      <div id="recommendation-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cartItemsContainer = document.getElementById("cart-items");
+      const emptyCart = document.getElementById("empty-cart");
+      const totalPayment = document.getElementById("total-payment");
+      const buyNowButton = document.getElementById("buy-now");
+      const cartCount = document.getElementById("cart-count");
+      let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+      // Update cart display
+      function updateCartDisplay() {
+        cartItemsContainer.innerHTML = "";
+        if (cart.length === 0) {
+          emptyCart.classList.remove("hidden");
+          buyNowButton.disabled = true;
+          totalPayment.textContent = "Rp 0";
+        } else {
+          emptyCart.classList.add("hidden");
+          let total = 0;
+          cart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            cartItemsContainer.innerHTML += `
+              <div class="bg-white p-2 rounded shadow flex items-center">
+                <img src="${item.image}" alt="${item.title}" class="w-16 h-16 object-contain mr-2" />
+                <div>
+                  <h3 class="text-sm font-medium">${item.title}</h3>
+                  <p>Rp ${item.price.toLocaleString("id-ID")} x ${item.quantity}</p>
+                </div>
+                <button class="ml-auto text-red-500" onclick="removeItem(${item.id})"><i class="ri-delete-bin-line"></i></button>
+              </div>
+            `;
+          });
+          totalPayment.textContent = `Rp ${total.toLocaleString("id-ID")}`;
+          buyNowButton.disabled = false;
+        }
+        cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCount.classList.toggle("hidden", cart.length === 0);
+        localStorage.setItem("cartItems", JSON.stringify(cart));
+      }
+
+      // Add to cart function
+      function addToCart(product) {
+        const priceIDR = Math.round(product.price * 15000);
+        const existingItemIndex = cart.findIndex(item => item.id === product.id);
+        if (existingItemIndex >= 0) {
+          cart[existingItemIndex].quantity += 1;
+        } else {
+          cart.push({
+            id: product.id,
+            title: product.title,
+            price: priceIDR,
+            image: product.image,
+            quantity: 1
+          });
+        }
+        updateCartDisplay();
+      }
+
+      // Remove item function
+      window.removeItem = function(id) {
+        cart = cart.filter(item => item.id !== id);
+        updateCartDisplay();
+      };
+
+      // Fetch recommendations and add event listeners
+      fetch("https://fakestoreapi.com/products?limit=6")
+        .then(res => res.json())
+        .then(products => {
+          const recommendationContainer = document.getElementById("recommendation-container");
+          recommendationContainer.innerHTML = "";
+          products.forEach(product => {
+            const priceIDR = Math.round(product.price * 15000);
+            const productDiv = document.createElement("div");
+            productDiv.className = "bg-white rounded shadow p-2";
+            productDiv.innerHTML = `
+              <img src="${product.image}" alt="${product.title}" class="w-full h-32 object-contain" />
+              <h3 class="text-sm font-medium mt-2">${product.title}</h3>
+              <p class="text-primary font-bold mt-1">Rp ${priceIDR.toLocaleString("id-ID")}</p>
+              <button class="w-full mt-2 bg-primary text-white py-1 rounded add-to-cart" data-id="${product.id}">Tambah ke Keranjang</button>
+            `;
+            recommendationContainer.appendChild(productDiv);
+          });
+
+          // Add event listeners to all Add to Cart buttons
+          document.querySelectorAll(".add-to-cart").forEach(button => {
+            button.addEventListener("click", () => {
+              const productId = button.getAttribute("data-id");
+              const product = products.find(p => p.id.toString() === productId);
+              if (product) {
+                addToCart(product);
+              }
+            });
+          });
+        })
+        .catch(error => {
+          console.error("Gagal mengambil produk:", error);
+          document.getElementById("recommendation-container").innerHTML = "<p class='text-gray-500'>Gagal memuat rekomendasi.</p>";
+        });
+
+      // Initial display
+      updateCartDisplay();
+    });
+  </script>
+</body>
+</html>

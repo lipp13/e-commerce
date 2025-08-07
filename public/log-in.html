@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-in</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#3b82f6',secondary:'#64748b'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-md mx-auto p-6">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-2xl font-semibold text-gray-800">Masuk</h1>
+                <a href="register.html">Daftar</a>
+            </div>
+            
+            <p class="text-gray-600 text-sm mb-6">
+                Masuk dengan no. handphone/email yang sudah diverifikasi, ya
+            </p>
+            
+            <form class="space-y-5">
+                <div class="space-y-1.5">
+                    <label class="block text-sm text-gray-600">No Handphone atau Email</label>
+                    <input 
+                        type="text" 
+                        placeholder="Masukkan no. Handphone atau emailmu" 
+                        class="w-full px-4 py-2.5 rounded border border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-sm"
+                    >
+                </div>
+                
+                <div class="space-y-1.5">
+                    <label class="block text-sm text-gray-600">Password</label>
+                    <div class="relative">
+                        <input 
+                            type="password" 
+                            id="password"
+                            placeholder="Masukkan passwordmu" 
+                            class="w-full px-4 py-2.5 rounded border border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-sm pr-10"
+                        >
+                        <button 
+                            type="button" 
+                            id="togglePassword"
+                            class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-500"
+                        >
+                            <i class="ri-eye-line"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="text-right">
+                    <a href="#" class="text-primary hover:text-primary/80 text-sm">Lupa Password?</a>
+                </div>
+
+                <a href="home_page.html" class="block text-center w-full bg-gray-200 text-gray-600 py-3 rounded !rounded-button font-medium mt-4 hover:bg-gray-300 transition duration-200 whitespace-nowrap">
+                    Masuk
+                </a>
+                
+                <div class="relative flex items-center my-6">
+                    <div class="flex-grow border-t border-gray-300"></div>
+                    <span class="flex-shrink mx-3 text-gray-500 text-sm">atau dengan</span>
+                    <div class="flex-grow border-t border-gray-300"></div>
+                </div>
+                
+                <button 
+                    type="button" 
+                    class="w-full flex items-center justify-center py-2.5 px-4 border border-gray-300 rounded !rounded-button hover:bg-gray-50 transition-colors whitespace-nowrap"
+                >
+                    <div class="w-5 h-5 flex items-center justify-center mr-3">
+                        <i class="ri-google-fill text-lg"></i>
+                    </div>
+                    <span class="text-gray-700">Google</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const togglePassword = document.getElementById('togglePassword');
+            const password = document.getElementById('password');
+            
+            togglePassword.addEventListener('click', function() {
+                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                password.setAttribute('type', type);
+                
+                if (type === 'password') {
+                    togglePassword.innerHTML = '<i class="ri-eye-line"></i>';
+                } else {
+                    togglePassword.innerHTML = '<i class="ri-eye-off-line"></i>';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

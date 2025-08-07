@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - Central Store</title>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: "#0a3b7c", secondary: "#e63946" },
+          borderRadius: { button: "8px" },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" />
+</head>
+<body class="bg-gray-50 font-sans">
+  <!-- Navigation -->
+  <nav class="bg-primary text-white py-3 px-4">
+    <div class="flex justify-between items-center">
+      <a href="keranjang.html" class="text-xl font-bold">Central Store</a>
+      <a href="#" class="text-white"><i class="ri-home-4-line"></i></a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container mx-auto p-4">
+    <h2 class="text-2xl font-bold mb-4 text-center">Selesaikan Pembayaran</h2>
+
+    <!-- Order Summary -->
+    <div class="bg-white rounded-lg shadow p-4 mb-6">
+      <h3 class="text-lg font-semibold mb-2">Ringkasan Pesanan</h3>
+      <div id="cart-items" class="space-y-2 mb-4"></div>
+      <div class="border-t pt-2">
+        <p class="text-lg font-bold">Total: <span id="total-payment" class="text-primary">Rp 0</span></p>
+      </div>
+    </div>
+
+    <!-- Payment Form -->
+    <div class="bg-white rounded-lg shadow p-4">
+      <h3 class="text-lg font-semibold mb-2">Detail Pembayaran</h3>
+      <form id="payment-form" class="space-y-4">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+          <input type="text" id="name" class="w-full p-2 border rounded mt-1" required />
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email" id="email" class="w-full p-2 border rounded mt-1" required />
+        </div>
+        <div>
+          <label for="address" class="block text-sm font-medium text-gray-700">Alamat Pengiriman</label>
+          <textarea id="address" class="w-full p-2 border rounded mt-1" rows="3" required></textarea>
+        </div>
+        <div>
+            <table class="w-full table-auto border-collapse">
+        <thead>
+          <tr class="bg-gray-200 text-left">
+            <th class="border px-4 py-2">Pilih</th>
+            <th class="border px-4 py-2">Metode</th>
+            <th class="border px-4 py-2">Keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border px-4 py-2">
+              <input type="radio" name="payment" value="COD" required />
+            </td>
+            <td class="border px-4 py-2">COD (Bayar di Tempat)</td>
+            <td class="border px-4 py-2">Bayar saat barang diterima</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">
+              <input type="radio" name="payment" value="PayLater" />
+            </td>
+            <td class="border px-4 py-2">PayLater</td>
+            <td class="border px-4 py-2">Bayar nanti/cicilan</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">
+              <input type="radio" name="payment" value="Transfer Bank" />
+            </td>
+            <td class="border px-4 py-2">Transfer Bank</td>
+            <td class="border px-4 py-2">BCA, BRI, Mandiri, dll</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">
+              <input type="radio" name="payment" value="E-Wallet" />
+            </td>
+            <td class="border px-4 py-2">E-Wallet</td>
+            <td class="border px-4 py-2">OVO, GoPay, DANA, dll</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">
+              <input type="radio" name="payment" value="QRIS" />
+            </td>
+            <td class="border px-4 py-2">QRIS</td>
+            <td class="border px-4 py-2">Scan QR dari aplikasi</td>
+          </tr>
+        </tbody>
+      </table>
+
+        </div>
+        <button type="submit" class="w-full bg-primary text-white py-2 rounded hover:bg-blue-800">Bayar Sekarang</button>
+      </form>
+    </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cartItemsContainer = document.getElementById("cart-items");
+      const totalPayment = document.getElementById("total-payment");
+      const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = "<p class='text-gray-500'>Tidak ada item untuk checkout.</p>";
+      } else {
+        let total = 0;
+        cart.forEach(item => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
+          cartItemsContainer.innerHTML += `
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <img src="${item.image}" alt="${item.title}" class="w-12 h-12 object-contain mr-2" />
+                <span class="text-sm">${item.title} x ${item.quantity}</span>
+              </div>
+              <span class="text-sm font-medium">Rp ${itemTotal.toLocaleString("id-ID")}</span>
+            </div>
+          `;
+        });
+        totalPayment.textContent = `Rp ${total.toLocaleString("id-ID")}`;
+      }
+
+      // Handle form submission (simulated)
+      const paymentForm = document.getElementById("payment-form");
+      paymentForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Pembayaran berhasil! Terima kasih atas pesanan Anda. Silakan cek email untuk konfirmasi.");
+        localStorage.removeItem("cartItems"); // Clear cart after successful payment
+        window.location.href = "home_page.html"; // Redirect to homepage page
+      });
+    });
+  </script>
+</body>
+</html>
